@@ -1,48 +1,79 @@
 ﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, User!");
-Console.WriteLine("Welcome to the calculator");
+using System;
 
-try
+namespace MyCalculator 
 {
-    Console.WriteLine("Input your first value");
-    int one = Convert.ToInt32(Console.ReadLine());
-
-    
-
-    Console.WriteLine("Input your second value");
-    int two = Convert.ToInt32(Console.ReadLine());
-
-    Console.WriteLine("Available operations are; *, /, +, -.");
-    string answer = Console.ReadLine();
-
-
-
-    switch (answer)
+    class Calculator
     {
-        case ("*"):
-            answer = "*";
-            Console.WriteLine($"The answer is {one * two}");
-            break;
+        static void Main(string[] args) 
+        {
+	    Console.WriteLine("Hello, User!");
+	    Console.WriteLine("Welcome to the calculator");
+						
+            double x;
+            double y;
+            double answer;
 
-        case ("/"):
-            answer = "/";
-            Console.WriteLine($"The answer is {one / two}");
-            break;
+            Console.WriteLine("Input you first number.");
+            x = Convert.ToDouble(Console.ReadLine());
 
-        case ("+"):
-            answer = "+";
-            Console.WriteLine($"The answer is {one + two}");
-            break ;
+            Console.WriteLine("Input your second number");
+            y = Convert.ToDouble(Console.ReadLine());
 
-        case ("-"): 
-            answer = "-";
-            Console.WriteLine($"The answer is {one - two}");
-            break;
+            Console.WriteLine("what do you want to do?\n *: multiply, /: division, +: addition, -: subtraction");
+            var option = Console.ReadLine();
 
+            switch(option)
+                {
+                case "*":
+                    answer = multiply(x,y);
+                    Console.WriteLine(answer);
+                break;
+
+                case "/":
+                    answer = division(x,y);
+                    Console.WriteLine(answer);
+                break;
+
+                case "+":
+                    answer = addition(x, y);
+                    Console.WriteLine(answer);
+                break;
+
+                case "-":
+                    answer = subtraction(x, y);
+                    Console.WriteLine(answer);
+                break;
+
+                default:
+                    Console.WriteLine("invalid operator");
+                break;
+                }
+        }
+
+        static double multiply(double x,double y)
+        {
+            double z = x * y;
+            return z;
+        }
+
+        static double addition(double x, double y)
+        {
+            double z = x + y;
+            return z;
+        }
+
+        static double subtraction(double x, double y)
+        {
+            double z = x - y;
+            return z;
+        }
+
+        static double division(double x, double y)
+        {
+            double z = x / y;
+            return z;
+        }
     }
 }
 
-catch
-{
-    Console.WriteLine("Invalid operation");
-}
